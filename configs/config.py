@@ -9,7 +9,7 @@ IMG_HEIGHT = 270
 FOV = 90
 
 # Simulation
-MAX_NPC = 3
+MAX_NPC = 15
 
 # Vehicle
-TARGET_SPEED = 30
+TARGET_SPEED = 40
