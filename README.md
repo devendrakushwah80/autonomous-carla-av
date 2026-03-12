@@ -1,137 +1,264 @@
-# 🚗 Autonomous Driving System in CARLA
+# 🚗 Autonomous Driving System using CARLA & YOLOv8
 
-A hybrid autonomous driving system built using the CARLA simulator that integrates rule-based navigation and deep learning perception.
+A hybrid autonomous driving system built using the **CARLA Simulator** that integrates **rule-based navigation** with **deep learning perception**.
 
-The system demonstrates real-time autonomous driving with object detection, traffic awareness, and 3D environment understanding.
-
----
-
-## 🎥 Demo
-
-(Add demo GIF or video here)
+The system demonstrates **real-time autonomous driving**, **object detection**, **traffic awareness**, and **3D environment understanding** in a simulated urban environment.
 
 ---
 
-## 🧠 System Architecture
+# 📌 Project Overview
 
-Simulation → Sensors → Perception → Planning → Control → Visualization
+Autonomous vehicles must understand their environment, plan routes, and control the vehicle safely.
+
+This project simulates a **mini autonomous driving stack** consisting of:
+
+* Environment simulation
+* Sensor data acquisition
+* Deep learning perception
+* Navigation planning
+* Vehicle control
+* Visualization dashboard
+
+All components run in real time inside the **CARLA autonomous driving simulator**.
+
+---
+
+# 🎥 Demo
+
+Add demo images or GIF here.
+
+Example:
+
+```
+demo/demo.gif
+```
+
+Recommended screenshots:
+
+* Front camera view
+* YOLO object detection
+* Eagle-eye top view
+* 3D bounding boxes
+
+---
+
+# 🧠 System Architecture
+
+The system follows a simplified autonomous driving pipeline:
 
 ```
 CARLA Simulator
-↓
+        ↓
 RGB + Semantic Cameras
-↓
-Perception
-├ YOLOv8 Object Detection
-├ Semantic Road Segmentation
-└ 3D Bounding Box Projection
-↓
-BehaviorAgent Navigation
-↓
+        ↓
+Perception Module
+   ├ YOLOv8 Object Detection
+   ├ Semantic Road Segmentation
+   └ 3D Bounding Box Projection
+        ↓
+Navigation (BehaviorAgent)
+        ↓
 Vehicle Control
-↓
+        ↓
 Visualization Dashboard
 ```
 
----
-
-## 🚀 Features
-
-- Autonomous driving using **CARLA BehaviorAgent**
-- **YOLOv8 object detection**
-- **Semantic road segmentation overlay**
-- **3D projected vehicle bounding boxes**
-- **Traffic light awareness**
-- **Real-time performance monitoring**
-- CPU / GPU usage tracking
-- FPS monitoring
+This architecture mimics the structure used in **real autonomous vehicle systems**.
 
 ---
 
-## 🛠 Technologies Used
+# 🚀 Key Features
 
-| Component | Technology |
-|--------|-------------|
-| Simulator | CARLA |
-| Language | Python |
-| Object Detection | YOLOv8 |
-| Visualization | OpenCV |
-| Deep Learning | PyTorch |
-| Monitoring | psutil / GPUtil |
+### 🚗 Autonomous Navigation
+
+Uses CARLA's **BehaviorAgent** for rule-based navigation and path planning.
+
+### 👁️ Real-time Object Detection
+
+Detects surrounding vehicles using **YOLOv8 deep learning model**.
+
+### 🛣 Semantic Road Segmentation
+
+Semantic camera identifies road surfaces to understand the environment.
+
+### 📦 3D Bounding Box Projection
+
+Projects CARLA vehicle bounding boxes onto the camera image for spatial visualization.
+
+### 🚦 Traffic Light Awareness
+
+Vehicle reads the traffic light state from the simulator.
+
+### ⚠️ Collision Warning System
+
+Warns when vehicles are too close and applies emergency braking.
+
+### 🖥 Visualization Dashboard
+
+Displays real-time system data including:
+
+* Speed
+* FPS
+* CPU usage
+* GPU usage
+* Traffic light state
+* Collision warnings
+
+### 🦅 Eagle-Eye Monitoring View
+
+Top-down camera provides a bird-eye view of the simulation.
 
 ---
 
-## 📂 Project Structure
+# 🛠 Technologies Used
+
+| Component              | Technology      |
+| ---------------------- | --------------- |
+| Simulator              | CARLA           |
+| Programming Language   | Python          |
+| Deep Learning          | PyTorch         |
+| Object Detection       | YOLOv8          |
+| Computer Vision        | OpenCV          |
+| Performance Monitoring | psutil / GPUtil |
+
+---
+
+# 📂 Project Structure
 
 ```
 autonomous-carla-av/
 │
 ├── app/
-│ └── main.py
+│   └── main.py
 │
 ├── core/
-│ ├── simulation/
-│ │ ├── simulator.py
-│ │ ├── vehicle_manager.py
-│ │ └── sensors.py
-│ │
-│ ├── control/
-│ │ └── pid_controller.py
+│   ├── simulation/
+│   │   ├── simulator.py
+│   │   ├── vehicle_manager.py
+│   │   └── sensors.py
+│   │
+│   ├── control/
+│   │   └── pid_controller.py
 │
 ├── configs/
-│ └── config.py
+│   └── config.py
+│
+└── README.md
 ```
 
 ---
 
-## ⚙️ Installation
+# ⚙️ Installation
 
-### 1️⃣ Clone repo
+## 1️⃣ Clone the Repository
 
-```
-git clone https://github.com/YOUR_USERNAME/autonomous-carla-av.git
+```bash
+git clone https://github.com/devendrakushwah80/autonomous-carla-av.git
 cd autonomous-carla-av
 ```
 
-### 2️⃣ Install dependencies
+---
 
+## 2️⃣ Install Dependencies
+
+Create virtual environment (recommended):
+
+```bash
+python -m venv venv
+venv\Scripts\activate
 ```
+
+Install packages:
+
+```bash
 pip install -r requirements.txt
 ```
 
-### 3️⃣ Run CARLA Simulator
+---
 
-Start CARLA server.
+## 3️⃣ Run CARLA Simulator
 
-### 4️⃣ Run project
+Download CARLA:
+
+https://carla.org/
+
+Run the simulator:
 
 ```
+CarlaUE4.exe
+```
+
+---
+
+## 4️⃣ Run the Autonomous System
+
+```bash
 python -m app.main
 ```
 
 ---
 
-## 🎯 Results
+# 📊 System Outputs
 
-- Stable autonomous driving
-- Real-time object detection
-- Traffic light compliance
-- Smooth navigation in urban environment
+The system provides the following outputs:
+
+### Front Camera View
+
+Displays:
+
+* object detection
+* semantic overlay
+* 3D vehicle boxes
+
+### Eagle-Eye View
+
+Top-down monitoring of the simulation.
+
+### Performance Dashboard
+
+Displays:
+
+* Speed
+* FPS
+* CPU usage
+* GPU usage
+* Traffic light state
+* Collision warnings
 
 ---
 
-## 🔮 Future Improvements
+# 🎯 Results
 
-- LiDAR integration
-- Sensor fusion
-- Reinforcement learning control
-- Trajectory planning
-- Real-world deployment research
+The system successfully demonstrates:
+
+* Autonomous navigation in CARLA
+* Real-time deep learning perception
+* Collision warning system
+* Traffic light awareness
+* Smooth vehicle navigation
 
 ---
 
-## 👨‍💻 Author
+# 🔮 Future Improvements
 
-Devendra Kushwah
+Possible future enhancements include:
+
+* LiDAR sensor integration
+* Multi-sensor fusion
+* Lane detection algorithms
+* Reinforcement learning based control
+* Pedestrian avoidance system
+* Autonomous overtaking
+* Real-world autonomous vehicle research
+
+---
+
+# 👨‍💻 Author
+
+**Devendra Kushwah**
 
 Machine Learning & Autonomous Systems Enthusiast
+
+---
+🍴 Fork the project
+🤝 Contribute improvements
